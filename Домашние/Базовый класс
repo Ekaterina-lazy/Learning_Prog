@@ -1,0 +1,57 @@
+class Employee:
+  def __init__ (self, id, name, position, base_salary):
+    if(type(base_salary)==str):
+      base_salary=int(balance)
+    self.id=id
+    self.name=name
+    self.position=position
+    self.base_salary=base_salary
+    self.history=[]
+
+#Чтобы посчитать годовую зарплату
+  def calculate_salary(self,base_salary):
+    self.base_salary=base_salary
+    self.calculate_salary=self.base_salary*12
+    return result_salary
+
+#Чтобы внести деньги (и проверить, что пользователь ввёл именно число)
+  def deposit(self,money):
+    if (type(money)==int) or money.isdigit(): #Если введенные данные являются числом, код работает, если нет - нет
+      money=int(money) #Преобразовываем введенные данные в нужный класс
+      if(money>0):
+        self.base_salary=self.base_salary+money
+        print('Пополнение прошло успешно')
+        self.record('Пополнение',money,datetime.now()) #Аргумент для того, чтобы показать актуальную на данный момент дату и время снятия денег
+      else: 
+        print('Укажите положительное число')
+    else:
+      print('Пожалуйста, введите число') 
+
+#Чтобы снять деньги
+  def withdraw(self,money):
+    if (type(money)==int) or money.isdigit(): #Если введенные данные являются числом, код работает, если нет - нет
+      money=int(money) #Преобразовываем введенные данные в нужный класс
+      if(money>0 and self.base_salary>=money):
+        self.base_salary=self.base_salary-money
+        print('Снятие прошло успешно')
+        self.record('Снятие',money,datetime.now()) #Аргумент для того, чтобы показать актуальную на данный момент дату и время снятия денег
+      else: 
+        print('Укажите корректную сумму, которую хотели бы снять')
+    else:
+      print('Пожалуйста, введите число')
+
+#Чтобы создать запись истории
+  def record(self,method,money,date):
+    operation={      
+      "Операция":method,
+      "Сумма":money,
+      "Дата и время":date
+    }
+    self.history.append(operation)
+#Чтобы проверить баланс
+  def getBalance(self):
+    return self.base_salary
+
+#Чтобы посмотреть историю
+  def getHistory(self):
+    print(self.history)
