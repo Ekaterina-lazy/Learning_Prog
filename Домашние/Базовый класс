@@ -55,3 +55,30 @@ class Employee:
 #Чтобы посмотреть историю
   def getHistory(self):
     print(self.history)
+
+
+class Manager(Employee):
+  def __init__ (self, id, name, position, base_salary, bonus=15000):
+    super().__init__(self,id, name, position, base_salary)
+    self.bonus=bonus
+  
+  def Calculate_result_salary(self,base_salary):
+    self.result_salary=base_salary+bonus
+    return final_salary
+    print('Ваша зарплата менеджера с учётом бонуса:',final_salary)
+
+class Developer(Employee):
+  def __init__(self,id,position,hourly_rate,hours_worked):
+    super().__init__(self,id,position)
+    self.hourly_rate=hourly_rate
+    self.hours_worked=hours_worked
+  def calculate_final_salary(self):
+    result_salary=hourly_rate*hours_worked
+    print("Ваша почасовая зарплата разработчика в соответствии с отработанными часами:",final_salary)
+
+class Student(Employee):
+  def __init__(self,id,position,base_salary):
+    super().__init__(self,id,position,base_salary)
+  def calculate_final_salary(self):
+    result_salary=base_salary/4
+    print("Ваша зарплата студента:",result_salary)
